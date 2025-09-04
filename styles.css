@@ -1,7 +1,16 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+
 /* Logo */
 .logo {
-  max-width: 160px;
+  max-width: 100px;
   margin-bottom: 1rem;
+  align-self: center;
 }
 
 /* Íconos de servicios */
@@ -61,21 +70,35 @@
 body {
   font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
   margin: 0;
-  background: #fff;
-  color: #222;
+  background-image: url(img/chris-ried-ieic5Tq8YMk-unsplash.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #0a0a0a;
   line-height: 1.6;
+  width: 100vw;
+  min-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari y Opera */
 }
 header {
-  background: linear-gradient(90deg, #ff6600 60%, #222 100%);
-  color: #fff;
-  padding: 2.5rem 2rem 1.5rem 2rem;
+  background-color: #4d072291;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: center;
   position: relative;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  min-height: 180px;
+  height: 22vh;
+  max-height: 260px;
+  padding-top: 1.2rem;
+  padding-bottom: 1.2rem;
 }
-
 header::after {
   content: "";
   position: absolute;
@@ -87,22 +110,35 @@ header::after {
   background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(12, 5, 0, 0.7) 100%);
   border-radius: inherit;
 }
+nav {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 0.5rem;
+}
 nav ul {
   list-style: none;
   display: flex;
   gap: 2rem;
   margin: 0;
   padding: 0;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  box-sizing: border-box;
 }
 nav a {
-  color: #fffbe6;
+  color: #ff6600;
   text-decoration: none;
   font-weight: 600;
   font-size: 1.1rem;
   transition: color 0.2s;
 }
 nav a:hover {
-  color: #ff6600;
+  color: #fffefb;
   text-decoration: underline;
 }
 main {
@@ -112,7 +148,7 @@ main {
 }
 section {
   margin-bottom: 2.5rem;
-  background: #fffbe6;
+  background: #fffbe6b4;
   border-radius: 12px;
   box-shadow: 0 4px 24px rgba(0,0,0,0.06);
   padding: 2.5rem;
@@ -124,7 +160,7 @@ section {
   gap: 1.5rem;
 }
 footer {
-  background: #222;
+  background: #22222283;
   color: #fff;
   text-align: center;
   padding: 1rem 0;
@@ -160,4 +196,41 @@ button:hover {
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
+}
+@media (max-width: 600px) {
+  html, body {
+    width: 100vw;
+    overflow-x: hidden;
+    padding: 0 !important;
+  }
+  header {
+    min-height: 120px;
+    height: auto;
+    padding-bottom: 0.7rem;
+  }
+  nav {
+    margin-bottom: 0.7rem;
+  }
+  main {
+    margin-top: 0.7rem !important;
+    padding: 0 0.5rem !important;
+    width: 100vw;
+    box-sizing: border-box;
+  }
+}
+.servicio {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 1.2rem;
+  margin-bottom: 2rem;
+}
+.servicio .icon-servicio {
+  margin-right: 1.2rem;
+  margin-left: 0;
+  margin-bottom: 0;
+}
+.servicio .servicio-texto {
+  flex: 1;
 }
