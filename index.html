@@ -5,24 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>desarrolloweb-pdl | Startup de Desarrollo Web</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
 </head>
 <body>
   <header>
-    <div class="header-content">
-      <img src="img/cubos.png" alt="Logo desarrolloweb-pdl" class="logo" />
-      <h1>desarrolloweb-pdl</h1>
-      <p class="slogan">Soluciones web creativas, rápidas y efectivas</p>
-      <p class="impacto">"Con una estrategia web correcta y diseño creativo, tu empresa puede lograr resultados superiores en internet."</p>
-    </div>
     <nav>
-      <ul>
+      <button class="nav-toggle" aria-label="Abrir menú">&#9776;</button>
+      <ul class="nav-list">
         <li><a href="#home">Inicio</a></li>
         <li><a href="#servicios">Servicios</a></li>
         <li><a href="#trabajos">Trabajos</a></li>
         <li><a href="#nosotros">Nosotros</a></li>
         <li><a href="#contacto">Contacto</a></li>
       </ul>
+      <div class="nav-overlay"></div>
     </nav>
+    <div class="header-content">
+      <img src="img/cubos.png" alt="Logo desarrolloweb-pdl" class="logo" />
+      <h1>desarrolloweb-pdl</h1>
+      <!-- <p class="slogan">Soluciones web creativas, rápidas y efectivas</p>
+      <p class="impacto">"Con una estrategia web correcta y diseño creativo, tu empresa puede lograr resultados superiores en internet."</p> -->
+    </div>
+    
   </header>
   <main>
     <section id="home" class="hero">
@@ -35,7 +39,7 @@
       <h2>¿Qué hacemos?</h2>
       <div class="servicios-lista">
         <div class="servicio">
-          <img src="img/cubos.png" alt="Diseño Web" class="icon-servicio" />
+          <img src="img/dvlop-pdl2.png" alt="Diseño Web" class="icon-servicio" />
           <h3>Diseño Web</h3>
           <p>Diseño de páginas web modernas, institucionales y comerciales.</p>
         </div>
@@ -47,7 +51,7 @@
         </div>
         
        <div class="servicio">
-          <img src="img/fotis-fotopoulos-6sAl6aQ4OWI-unsplash.jpg" alt="Rediseño Web" class="icon-servicio" />
+          <img src="img/28680155.jpeg" alt="Rediseño Web" class="icon-servicio" />
           <h3>Rediseño Web</h3>
           <p>Actualización y optimización de sitios existentes.</p>
         </div>
@@ -58,17 +62,17 @@
       <h2>Trabajos destacados</h2>
       <div class="galeria-trabajos">
         <div class="trabajo">
-          <img src="img/dvlop-pdl.png" alt="Trabajo 1" />
+          <img src="img/desarrolloweb-pdl.png" alt="Trabajo 1" />
           <h4>Diseño Comercial</h4>
           <a href="#">Ver Proyecto</a>
         </div>
         <div class="trabajo">
-          <img src="img/fabian-grohs-423591-unsplash.jpg" alt="Trabajo 2" />
+          <img src="img/Gemini_Generated_Image_dsmgfbdsmgfbdsmg.png" alt="Trabajo 2" />
           <h4>Web Urgente</h4>
           <a href="#">Ver Proyecto</a>
         </div>
         <div class="trabajo">
-          <img src="img/una-taza-de-javascript.png" alt="Trabajo 3" />
+          <img src="img/desarrolloweb.png" alt="Trabajo 3" />
           <h4>Diseño Integral</h4>
           <a href="#">Ver Proyecto</a>
         </div>
@@ -107,5 +111,101 @@
     <p>&copy; 2025 desarrolloweb-pdl. Todos los derechos reservados.</p>
   </footer>
   <script src="main.js"></script>
+  <script>
+document.addEventListener('DOMContentLoaded', function() {
+  const secciones = document.querySelectorAll('section');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, {
+    threshold: 0.15
+  });
+  secciones.forEach(sec => observer.observe(sec));
+});
+</script>
+<style>
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #ff6600;
+  cursor: pointer;
+  margin-right: 1rem;
+  z-index: 20;
+  transition: color 0.2s;
+}
+
+.nav-list {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  transition: none;
+}
+
+.nav-overlay {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  .nav-toggle {
+    display: block;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+  .nav-list {
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: -220px;
+    width: 220px;
+    height: 100vh;
+    background: #222;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+    padding: 2rem 1rem;
+    z-index: 19;
+    gap: 1.2rem;
+    transition: right 0.3s cubic-bezier(.77,0,.18,1);
+  }
+  .nav-list.show {
+    right: 0;
+  }
+  .nav-list li {
+    margin: 0;
+    text-align: right;
+  }
+  .nav-list a {
+    color: #ff6600;
+    font-size: 1.1rem;
+    padding: 0.5rem 1.2rem;
+    display: block;
+  }
+  .nav-overlay {
+    display: block;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(0,0,0,0.4);
+    z-index: 18;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
+  .nav-list.show ~ .nav-overlay {
+    opacity: 1;
+    pointer-events: all;
+  }
+  .nav-toggle.active {
+    color: #fff;
+  }
+}
+  </style>
 </body>
 </html>
