@@ -1,3 +1,45 @@
+document.addEventListener('DOMContentLoaded', function() {
+  // Menú hamburguesa
+  const navToggle = document.querySelector('.nav-toggle');
+  const navList = document.querySelector('.nav-list');
+  const navOverlay = document.querySelector('.nav-overlay');
+
+  navToggle.addEventListener('click', function() {
+    navList.classList.toggle('show');
+    navToggle.classList.toggle('active');
+    navOverlay.style.opacity = navList.classList.contains('show') ? '1' : '0';
+    navOverlay.style.pointerEvents = navList.classList.contains('show') ? 'all' : 'none';
+    navToggle.innerHTML = navList.classList.contains('show') ? '&times;' : '&#9776;';
+  });
+
+  navOverlay.addEventListener('click', function() {
+    navList.classList.remove('show');
+    navToggle.classList.remove('active');
+    navOverlay.style.opacity = '0';
+    navOverlay.style.pointerEvents = 'none';
+    navToggle.innerHTML = '&#9776;';
+  });
+
+  // Animación de aparición de secciones al hacer scroll
+  const sections = document.querySelectorAll('main section');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      } else {
+        entry.target.classList.remove('visible');
+      }
+    });
+  }, {
+    threshold: 0.2 // Ajusta el porcentaje de visibilidad para activar el efecto
+  });
+
+  sections.forEach(section => {
+    observer.observe(section);
+  });
+});
+
+
 // Ejemplo de proyectos (puedes reemplazar por datos reales o cargar dinámicamente)
 const proyectos = [
   {
@@ -32,26 +74,3 @@ if (contenedor) {
 }
 
 // Puedes agregar aquí componentes React para secciones interactivas si lo deseas
-
-document.addEventListener('DOMContentLoaded', function() {
-  const navToggle = document.querySelector('.nav-toggle');
-  const navList = document.querySelector('.nav-list');
-  const navOverlay = document.querySelector('.nav-overlay');
-
-  navToggle.addEventListener('click', function() {
-    navList.classList.toggle('show');
-    navToggle.classList.toggle('active');
-    navOverlay.style.opacity = navList.classList.contains('show') ? '1' : '0';
-    navOverlay.style.pointerEvents = navList.classList.contains('show') ? 'all' : 'none';
-    // Cambia el icono hamburguesa a X
-    navToggle.innerHTML = navList.classList.contains('show') ? '&times;' : '&#9776;';
-  });
-
-  navOverlay.addEventListener('click', function() {
-    navList.classList.remove('show');
-    navToggle.classList.remove('active');
-    navOverlay.style.opacity = '0';
-    navOverlay.style.pointerEvents = 'none';
-    navToggle.innerHTML = '&#9776;';
-  });
-});

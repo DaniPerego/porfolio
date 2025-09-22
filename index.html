@@ -30,9 +30,11 @@
   </header>
   <main>
     <section id="home" class="hero">
-      <h2>¡Impulsamos tu empresa en internet!</h2>
-      <p class="impacto">Realmente creemos que con una estrategia web correcta, comunicación acertada y diseño creativo, tu empresa puede sacar un provecho de internet muy superior al que imaginas posible.</p>
-      <a href="#contacto" class="cta-btn">Consultá ahora</a>
+        <div class="hero-1">
+        <h2>¡Impulsamos tu empresa en internet!</h2>
+        <p class="impacto">Realmente creemos que con una estrategia web correcta, comunicación acertada y diseño creativo, tu empresa puede sacar un provecho de internet muy superior al que imaginas posible.</p>
+        <a href="#contacto" class="cta-btn">Consultá ahora</a>
+      </div>
     </section>
 
     <section id="servicios" class="servicios">
@@ -88,8 +90,10 @@
     </section>
 
     <section id="nosotros" class="nosotros">
-      <h2>Sobre Nosotros</h2>
-      <p>Somos un equipo apasionado por la tecnología y la innovación. Creamos productos digitales que potencian empresas, cuidando cada detalle y generando estrategias exitosas.</p>
+      <div class="info-nosotros">
+        <h2>Sobre Nosotros</h2>
+        <p>Somos un equipo apasionado por la tecnología y la innovación. Creamos productos digitales que potencian empresas, cuidando cada detalle y generando estrategias exitosas.</p>
+      </div>
     </section>
 
     <section id="contacto" class="contacto">
@@ -111,101 +115,8 @@
     <p>&copy; 2025 desarrolloweb-pdl. Todos los derechos reservados.</p>
   </footer>
   <script src="main.js"></script>
-  <script>
-document.addEventListener('DOMContentLoaded', function() {
-  const secciones = document.querySelectorAll('section');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, {
-    threshold: 0.15
-  });
-  secciones.forEach(sec => observer.observe(sec));
-});
-</script>
-<style>
-.nav-toggle {
-  display: none;
-  background: none;
-  border: none;
-  font-size: 2rem;
-  color: #ff6600;
-  cursor: pointer;
-  margin-right: 1rem;
-  z-index: 20;
-  transition: color 0.2s;
-}
+ 
 
-.nav-list {
-  display: flex;
-  gap: 2rem;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  transition: none;
-}
-
-.nav-overlay {
-  display: none;
-}
-
-@media (max-width: 700px) {
-  .nav-toggle {
-    display: block;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-  }
-  .nav-list {
-    flex-direction: column;
-    position: fixed;
-    top: 0;
-    right: -220px;
-    width: 220px;
-    height: 100vh;
-    background: #222;
-    border-radius: 0 0 12px 12px;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.12);
-    padding: 2rem 1rem;
-    z-index: 19;
-    gap: 1.2rem;
-    transition: right 0.3s cubic-bezier(.77,0,.18,1);
-  }
-  .nav-list.show {
-    right: 0;
-  }
-  .nav-list li {
-    margin: 0;
-    text-align: right;
-  }
-  .nav-list a {
-    color: #ff6600;
-    font-size: 1.1rem;
-    padding: 0.5rem 1.2rem;
-    display: block;
-  }
-  .nav-overlay {
-    display: block;
-    position: fixed;
-    top: 0; left: 0;
-    width: 100vw; height: 100vh;
-    background: rgba(0,0,0,0.4);
-    z-index: 18;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s;
-  }
-  .nav-list.show ~ .nav-overlay {
-    opacity: 1;
-    pointer-events: all;
-  }
-  .nav-toggle.active {
-    color: #fff;
-  }
-}
   </style>
 </body>
 </html>

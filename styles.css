@@ -42,12 +42,21 @@ header {
 /* Logo */
 .logo {
   max-width: 120px;
-  margin-bottom: 0.5rem; /* Menor distancia con el h1 */
+  margin-bottom: 0.5rem;
   align-self: center;
   display: block;
   margin-left: auto;
   margin-right: auto;
-  padding: 6px 0 1px 0; /* Más padding arriba y abajo */
+  padding: 6px 0 1px 0;
+  animation: logoBounceRotate 2.2s infinite alternate;
+  filter: drop-shadow(0 0 0 #ff6600);  /*Aplica el color naranja al logo PNG */
+}
+
+@keyframes logoBounceRotate {
+  0%   { transform: translateY(0) scale(1) rotate(0deg); }
+  30%  { transform: translateY(-10px) scale(1.08) rotate(-8deg); }
+  60%  { transform: translateY(-16px) scale(1.12) rotate(8deg); }
+  100% { transform: translateY(0) scale(1) rotate(0deg); }
 }
 
 header h1 {
@@ -73,12 +82,11 @@ nav {
   justify-content: center;
   align-items: center;
   width: 100%;
-  margin-top: 24px;      /* Margen superior para separar del borde */
-  margin-bottom: 0;
-  background: #fffbe633;
-  padding: 0.7rem 0;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  margin-top: 32px;      /* Más margen superior */
+  margin-bottom: 24px;   /* Más margen inferior */
+  padding: 1.2rem 0;     /* Más padding arriba y abajo */
 }
+
 nav ul {
   display: grid;
   grid-auto-flow: column;
@@ -106,9 +114,9 @@ main {
   gap: 2.5rem;
   justify-items: center;
   width: 100%;
-  max-width: 900px;      /* Ancho máximo para todo el contenido */
-  margin: 2rem auto;
-  padding: 0 1rem;
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 6rem 2rem 2rem 2rem; /* Más padding arriba para separar del header */
   box-sizing: border-box;
 }
 section {
@@ -306,7 +314,85 @@ button:hover {
     box-sizing: border-box;
   }
 }
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #ff6600;
+  cursor: pointer;
+  margin-right: 1rem;
+  z-index: 20;
+  transition: color 0.2s;
+}
 
+.nav-list {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  transition: none;
+}
+
+.nav-overlay {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  .nav-toggle {
+    display: block;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+  .nav-list {
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: -220px;
+    width: 220px;
+    height: 100vh;
+    background: #222;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+    padding: 2rem 1rem;
+    z-index: 19;
+    gap: 1.2rem;
+    transition: right 0.3s cubic-bezier(.77,0,.18,1);
+  }
+  .nav-list.show {
+    right: 0;
+  }
+  .nav-list li {
+    margin: 0;
+    text-align: right;
+  }
+  .nav-list a {
+    color: #ff6600;
+    font-size: 1.1rem;
+    padding: 0.5rem 1.2rem;
+    display: block;
+  }
+  .nav-overlay {
+    display: block;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(0,0,0,0.4);
+    z-index: 18;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
+  .nav-list.show ~ .nav-overlay {
+    opacity: 1;
+    pointer-events: all;
+  }
+  .nav-toggle.active {
+    color: #fff;
+  }
+}
 /* Estilos para el menú de navegación móvil */
 .nav-toggle {
   display: none;
@@ -353,4 +439,29 @@ button:hover {
     top: 10px;
     right: 10px;
   }
+}
+
+/* Nuevos estilos para tarjetas y bloques */
+.servicio,
+.trabajo,
+.contacto-info,
+.hero-1,
+.info-nosotros,
+form,
+blockquote {
+  background: #0a0b1baf;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  padding: 1.5rem;
+  text-align: center;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.contacto form {
+  display: grid;
+  gap: 1rem;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto 2rem auto; /* Más margen inferior para separar del contacto-info */
+  box-sizing: border-box;
 }
